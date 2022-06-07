@@ -273,22 +273,22 @@
             ```
     8. 进入python根目录
         ```
-        ./configure --with-openssl=/Users/db/Documents/nike/python_with_tls/iOS_14_2_6s_oc_tls_python_boringssl/boringssl --prefix=/Users/db/Documents/nike/python_with_tls/iOS_14_2_6s_oc_tls_python_boringssl/python
+        ./configure --with-openssl=/Users/xx/Documents/xxxx/python_with_tls/iOS_14_2_6s_oc_tls_python_boringssl/boringssl --prefix=/Users/xx/Documents/xxxx/python_with_tls/iOS_14_2_6s_oc_tls_python_boringssl/python
         ```
     9. `vim Modules/Setup`，找到SSL，修改为下面的内容
         ```
-        SSL=/Users/db/Documents/nike/python_with_tls/iOS_14_2_6s_oc_tls_python_boringssl/boringssl
+        SSL=/Users/xx/Documents/xxxx/python_with_tls/iOS_14_2_6s_oc_tls_python_boringssl/boringssl
         _ssl _ssl.c \
             -DUSE_SSL -I$(SSL)/include -I$(SSL)/include/openssl \
             -L$(SSL)/lib -lssl -lcrypto
         ```
     10. `make CFLAGS="-Wno-error" && make install`
 4. 使用
-    1. 在 `/Users/db/Documents/nike/python_with_tls/iOS_14_2_6s_oc_tls_python_boringssl/python/bin`目录下`./pip3 install virtualenv -i https://pypi.douban.com/simple`
-    2. 在 `/Users/db/Documents/nike/python_with_tls/iOS_14_2_6s_oc_tls_python_boringssl/test`目录下`../python/bin/virtualenv -p ../python/bin/python3 env`
-    3. 在 `/Users/db/Documents/nike/python_with_tls/iOS_14_2_6s_oc_tls_python_boringssl/test`目录下`. env/bin/activate`
-    4. 在 `/Users/db/Documents/nike/python_with_tls/iOS_14_2_6s_oc_tls_python_boringssl/test`目录下`pip install httpx[http2] -i https://pypi.douban.com/simple`
-    5. application_layer_protocol_negotiation 里面的顺序问题，直接在`/Users/db/Documents/nike/python_with_tls/iOS_14_2_6s_oc_tls_python_boringssl/test`目录下修改 `vim env/lib/python3.8/site-packages/httpcore/_sync/connection.py` 42行，h2和http/1.1的顺序调换位置
+    1. 在 `/Users/xx/Documents/xxxx/python_with_tls/iOS_14_2_6s_oc_tls_python_boringssl/python/bin`目录下`./pip3 install virtualenv -i https://pypi.douban.com/simple`
+    2. 在 `/Users/xx/Documents/xxxx/python_with_tls/iOS_14_2_6s_oc_tls_python_boringssl/test`目录下`../python/bin/virtualenv -p ../python/bin/python3 env`
+    3. 在 `/Users/xx/Documents/xxxx/python_with_tls/iOS_14_2_6s_oc_tls_python_boringssl/test`目录下`. env/bin/activate`
+    4. 在 `/Users/xx/Documents/xxxx/python_with_tls/iOS_14_2_6s_oc_tls_python_boringssl/test`目录下`pip install httpx[http2] -i https://pypi.douban.com/simple`
+    5. application_layer_protocol_negotiation 里面的顺序问题，直接在`/Users/xx/Documents/xxxx/python_with_tls/iOS_14_2_6s_oc_tls_python_boringssl/test`目录下修改 `vim env/lib/python3.8/site-packages/httpcore/_sync/connection.py` 42行，h2和http/1.1的顺序调换位置
 5. 测试脚本
     ```
     import ssl
